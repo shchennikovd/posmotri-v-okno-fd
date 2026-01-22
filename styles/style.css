@@ -2,7 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  /* outline: 1px solid red; */
+  outline: 1px solid red;
 }
 
 html {
@@ -99,7 +99,16 @@ ol {
 }
 
 .search-form__fieldset {
+  width: 225px;
   border: none;
+}
+
+.search-form__fieldset:first-of-type .search-form__label {
+  width: 225px;
+}
+
+.search-form__fieldset:first-of-type .search-form__textfield {
+  width: 100%;
 }
 
 .search-form__fieldset-title {
