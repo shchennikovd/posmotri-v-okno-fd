@@ -2,7 +2,6 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  outline: 1px solid red;
 }
 
 html {
@@ -67,7 +66,6 @@ ol {
 
 .content {
   width: 100%;
-  height: 534px; /* разобраться в чем проблема и попытаться сделать без строгой высоты */
   display: flex;
   align-items: end;
   padding-left: 30px;
@@ -89,6 +87,7 @@ ol {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   cursor: pointer;
 }
 
@@ -99,8 +98,12 @@ ol {
 }
 
 .search-form__fieldset {
-  width: 225px;
+  min-width: 225px;
   border: none;
+}
+
+.search-form .search-form__fieldset:nth-child(2) {
+  padding-left: 5px;
 }
 
 .search-form__fieldset-title {
@@ -118,7 +121,7 @@ ol {
 }
 
 .search-form__fieldset:first-of-type .search-form__label {
-  width: 225px;
+  min-width: 225px;
 }
 
 .search-form__fieldset:first-of-type .search-form__textfield {
@@ -164,28 +167,30 @@ ol {
   font-weight: 800;
   background: transparent;
   color: #fff;
-  height: 34px;
+  min-height: 34px;
   border: 1px solid #fff;
   padding: 0;
   cursor: pointer;
+  appearance: none;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:active {
+  background-color: #545050;
+  text-decoration: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;
 }
 
 .search-form__submit-button {
   width: 194px;
   align-self: flex-end;
   padding: 1px;
-}
-
-.search-form__submit-button:hover {
-  text-decoration: underline;
-}
-
-.search-form__submit-button:active {
-  background-color: #545050;
-}
-
-.search-form__submit-button:focus-visible {
-  outline: 1px solid #fff;
 }
 
 .search-form__textfield {
@@ -210,7 +215,9 @@ ol {
 
 .search-form__checkbox-list {
   display: flex;
-  gap: 15px;
+  gap: 10px;
+  justify-content: space-around;
+  padding-right: 8px;
 }
 
 .content__details {
@@ -234,7 +241,8 @@ ol {
 .content__list-container {
   position: relative;
   height: 298px;
-  overflow-y: scroll;
+  text-overflow: ellipsis;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -251,26 +259,23 @@ ol {
   padding-right: 3px;
 }
 
-.content__list-item:hover {
-  text-decoration: underline;
-}
-
-.content__list-item:focus {
-  outline: none;
-}
-
-.content__list-item:focus-visible {
-  outline: 1px solid #fff;
-}
-
 .content__card-link {
   text-decoration: none;
   color: #fff;
   display: block;
 }
 
+.content__card-link:hover {
+  text-decoration: underline;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+}
+
 .content__card-link:active {
   background-color: #545050;
+  text-decoration: none;
 }
 
 .content__video-card {
@@ -282,7 +287,6 @@ ol {
   font-family: Oswald, sans-serif;
   font-weight: 800;
   font-size: 30px;
-  margin-top: -7px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -301,6 +305,7 @@ ol {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  width: 196px;
 }
 
 .content__video-card-thumbnail {
@@ -315,14 +320,6 @@ ol {
   height: 34px;
   line-height: 34px;
   align-self: flex-start;
-}
-
-.more-button:hover {
-  text-decoration: underline;
-}
-
-.more-button:active {
-  background-color: #545050;
 }
 
 .content__card-link_current {
